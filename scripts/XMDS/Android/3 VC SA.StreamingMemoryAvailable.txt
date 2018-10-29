@@ -24,7 +24,7 @@ end
 
 0DD0: 0@ = get_label_addr @_ZN10CStreaming18ms_memoryAvailableE
 0DD1: 0@ = get_func_addr_by_cstr_name 0@
-0DD9: write_mem_addr 0@ value 1M size 4 add_ib 0 protect 1
+0DD9: write_mem_addr 0@ value 2GB size 4 add_ib 0 protect 1
 end_thread 
 
 :_ZN10CStreaming18ms_memoryAvailableE
