@@ -1,2 +1,0 @@
-[$CONSTANTS]
-CLEO_6=You're using an old version of CLEO %s. Click here to update to %s.
