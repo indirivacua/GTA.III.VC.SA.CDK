@@ -14,7 +14,7 @@ end
 
 0DD6: 0@ = get_game_version
 if
- not 0@ <> GTA3v1_6
+  0@ <> GTA3v1_6
 jf @FrameLimit
 end_thread
 
