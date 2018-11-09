@@ -1,0 +1,28 @@
+{$CLEO .csa}
+0000:
+//by: XMDS
+//GTA3.FrameLimit
+const
+ FrameLimit20 = 0x14
+ FrameLimit25 = 0x19
+ FrameLimit30 = 0x1E
+ FrameLimit48 = 0x30
+ FrameLimit60 = 0x3C
+ GTA3v1_6 = 11
+ RsGlobal = 0x002D58D8
+end
+
+0DD6: 0@ = get_game_version
+if
+ not 0@ <> GTA3v1_6
+jf @FrameLimit
+end_thread
+
+:FrameLimit
+0DD9: write_mem_addr 0x0020B3DC value FrameLimit60 size 1 add_ib 1 protect 1
+0DD8: 0@ = read_mem_addr RsGlobal size 4 add_ib 1
+0@ += 0x14 //0x00645310
+0DD9: write_mem_addr 0@ value FrameLimit60 size 1 add_ib 0 protect 1
+0DD9: write_mem_addr 0x00645310 value FrameLimit60 size 1 add_ib 1 protect 1
+
+end_thread
