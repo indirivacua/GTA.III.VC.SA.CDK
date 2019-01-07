@@ -1,0 +1,11 @@
+const
+    obj = 31@
+end
+if
+    player.Defined($player_char)
+then
+    actor.StorePos($player_actor, 29@, 30@, 31@)
+    if
+        0AE3: obj = random_object_near_point 29@ 30@ 31@ in_radius 200.0 find_next 0
+    then
+    

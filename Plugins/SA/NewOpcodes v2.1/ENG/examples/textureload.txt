@@ -1,0 +1,17 @@
+/*
+  NewOpcodes 2.0
+  Example script: TextureLoad
+  Shows loading texture from dds file and drawing it in a loop.
+*/
+
+{$CLEO}
+{$I stdc}
+if
+    0D7C: t = load_texture_dds_from "plateback1.dds" // IF and SET
+then
+    while true
+        wait 0
+        sprite.Draw(t, 100.0, 100.0, 300.0, 300.0, 255, 255, 255, 200, 0.0)
+    end
+end
+{$I end}

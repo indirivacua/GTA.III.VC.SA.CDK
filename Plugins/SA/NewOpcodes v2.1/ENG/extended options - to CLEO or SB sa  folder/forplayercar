@@ -1,0 +1,10 @@
+const
+    veh = 31@
+end
+if
+    player.Defined($player_char)
+then
+    if
+        actor.Driving($player_actor)
+    then
+        0811: veh = actor $player_actor car

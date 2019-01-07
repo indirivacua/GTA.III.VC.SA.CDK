@@ -1,0 +1,28 @@
+#CLASSESLIST
+
+Component
+Texture
+Sprite
+
+$Component
+$begin
+^Child,[0D1F,=,2,0,0],("Component%h")
+^Next,[0D20,=,2,0,0],("Component%h")
+^Name,[0D21,=,2,0,0],("Component%h")
+^LTM,[0D22,=,2,0,0],("Component%h")
+^Modelling,[0D23,=,2,0,0],("Component%h")
+$end
+
+$Texture
+$begin
+^LoadFromPNG,[0D64,=,2,0,0],("FileName%v")
+^LoadFromBMP,[0D61,=,2,0,0],("ImageFileName%v" "MaskFileName%v")
+^LoadFromDDS,[0D7C,=,2,0,0],("FileName%v")
+Unload,0D7D,0,0,("Texture%h")
+$end
+
+$Sprite
+$begin
+Draw,0D7E,0,0,("Texture%h" "Left%f" "Top%f" "Right%f" "Bottom%f" "Red%i" "Green%i" "Blue%i" "Alpha%i" "Angle%f")
+DrawWithGradient,0D7F,0,0,("Texture%h" "Left%f" "Top%f" "Right%f" "Bottom%f" "R1%i" "G1%i" "B1%i" "A1%i" "R2%i" "G2%i" "B2%i" "A2%i" "R3%i" "G3%i" "B3%i" "A3%i" "R4%i" "G4%i" "B4%i" "A4%i" "Angle%f")
+$end

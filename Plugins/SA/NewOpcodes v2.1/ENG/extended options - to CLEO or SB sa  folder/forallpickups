@@ -1,0 +1,13 @@
+const
+    pick = 31@
+end
+for 30@ = 0x9788C0 to 0x97D620 step 0x20
+    if
+        30@ > 0
+    then
+        0A8E: 31@ = 30@ + 0x1A
+        0A8D: 31@ = read_memory 31@ size 2 virtual_protect 0
+        31@ *= 0x10000
+        0A8F: 29@ = 30@ - 0x9788C0
+        29@ /= 0x20
+        005A: 31@ += 29@           

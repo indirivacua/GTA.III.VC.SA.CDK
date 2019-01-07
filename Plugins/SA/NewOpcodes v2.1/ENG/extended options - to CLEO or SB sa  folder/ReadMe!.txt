@@ -1,0 +1,1 @@
+texture_memory option is not supported anymore.

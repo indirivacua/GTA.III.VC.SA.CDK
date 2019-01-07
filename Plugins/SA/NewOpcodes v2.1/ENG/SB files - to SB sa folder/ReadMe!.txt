@@ -1,0 +1,1 @@
+Add content from opcodes_NEW.txt and SASCM_NEW.ini to opcodes.txt and SASCM.ini in SB\sa folder.

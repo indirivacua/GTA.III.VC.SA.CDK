@@ -1,0 +1,48 @@
+/*
+  NewOpcodes 2.0
+  Example script: Vehicle_Materials
+  Draws vehicle's windscreen materials on screen.
+*/
+
+{$CLEO}
+{$I stdc}
+
+0000:
+while true
+    wait 0
+    {$I forplayercar}
+        0D0D: 0@ = get_car veh component "windscreen_dummy" // IF and SET 
+        0D75: 1@ = component 0@ num_objects
+        if
+            1@ > 0
+        then
+            1@ -= 1
+            7@ = 100.0
+            8@ = 300.0
+            for 2@ = 0 to 1@
+                0D76: 3@ = component 0@ object 2@
+                if
+                    0D7A: 4@ = get_object 3@ num_materials // IF and SET
+                then
+                    if
+                        4@ > 0
+                    then
+                        4@ -= 1
+                        for 5@ = 0 to 4@
+                            0D7B: 6@ = get_object 3@ material 5@ texture // IF and SET
+                            0087: 9@ = 7@
+                            9@ -= 5.0
+                            0087: 10@ = 8@
+                            10@ += 5.0
+                            sprite.Draw(NULL, 9@, 95.0, 10@, 305.0, 20, 20, 20, 200, 0.0)
+                            sprite.Draw(6@, 7@, 100.0, 8@, 300.0, 255, 255, 255, 255, 0.0)
+                            7@ += 215.0
+                            8@ += 215.0
+                        end
+                    end
+                end
+            end
+        end
+    {$I for_end}
+end
+

@@ -1,0 +1,22 @@
+{$CLEO}
+{$I shaderApi}
+
+var
+    0@: shader
+end
+
+if
+    0@ = shader.Load("CLEO\blur.txt")
+then
+    while true
+        wait 0
+        068D: get_camera_position_to 4@ 5@ 6@
+        050A: 7@ = distance_between_XYZ 1@ 2@ 3@ and_XYZ 4@ 5@ 6@
+        7@ *= 0.0008
+        068D: get_camera_position_to 1@ 2@ 3@
+        0@.SetFloat("dist", 7@)
+        0@.Draw("ShowScreen", SCREEN_BASE_X, SCREEN_BASE_Y, SCREEN_SIZE_X, SCREEN_SIZE_Y)
+        
+    end
+end
+0A93: end_custom_thread

@@ -1,0 +1,891 @@
+<HTML><HEAD><TITLE>newOpcodes.cleo - HELP</TITLE></HEAD>
+<center>
+<font face="Monospace" size = 8>
+<b>NewOpcodes.cleo help file</b>
+</center>
+<BODY BGCOLOR="#EEEEEE"><font size = 4>
+<br><br>[h] - handle
+<br>[p] - pointer
+<br>[t] - NO texture (pointer to pointer to RwRaster)
+<br><br>
+<br><b>0D00=3,matrix %3d% = matrix %1d% * matrix %2d%</b>
+<br>Matrix multiplication.
+<br>Param 1: pointer to matrix
+<br>Param 2: pointer to matrix
+<br>Param 3: pointer to matrix
+<br>
+<br><b>0D01=6,rotate_matrix %1d% on_axis %2d% %3d% %4d% angle %5d% combine_op %6d%</b>
+<br>Matrix rotation.
+<br>Param 1: pointer to matrix
+<br>Param 2: axis X
+<br>Param 2: axis Y
+<br>Param 3: axis Z
+<br>Param 4: angle in degrees
+<br>Param 5: combine variant
+<br>
+<br><b>0D02=2,%2d% = matrix %1d% x_angle</b>
+<br>Gets the X angle of matrix (in degrees)
+<br>Param 1: pointer to matrix
+<br>Param 2: var to store angle
+<br>
+<br><b>0D03=2,%2d% = matrix %1d% y_angle</b>
+<br>Gets the Y angle of matrix (in degrees)
+<br>Param 1: pointer to matrix
+<br>Param 2: var to store angle
+<br>
+<br><b>0D04=2,%2d% = matrix %1d% z_angle</b>
+<br>Gets the Z angle of matrix (in degrees)
+<br>Param 1: pointer to matrix
+<br>Param 2: var to store angle
+<br>
+<br><b>0D05=4,set_matrix %1d% position %2d% %3d% %4d%</b>
+<br>Sets position for matrix.
+<br>Param 1: pointer to matrix
+<br>Param 2: position X
+<br>Param 3: position Y
+<br>Param 4: position Z
+<br>
+<br><b>0D06=4,get_matrix %1d% position_to %2d% %3d% %4d%</b>
+<br>Gets position of matrix.
+<br>Param 1: pointer to matrix
+<br>Param 2: var to store position X
+<br>Param 3: var to store  position Y
+<br>Param 4: var to store  position Z
+<br>
+<br><b>0D07=7,get_coords %1d% %2d% %3d% offsets_relative_to_matrix %4d% store_to %5d% %6d% %7d%</b>
+<br>Gets point relative offset on matrix.
+<br>Param 1: point X
+<br>Param 2: point Y
+<br>Param 3: point Z
+<br>Param 4:  pointer to matrix
+<br>Param 5: var to store X offset
+<br>Param 6:  var to store  Y offset
+<br>Param 7:  var to store  Z offset
+<br>
+<br><b>0D08=4,set_matrix %1d% angles_XYZ %2d% %3d% %4d%</b>
+<br>Sets matrix angles.
+<br>Param 1: pointer to matrix
+<br>Param 2: X angle
+<br>Param 3: Y angle
+<br>Param 4: Z angle
+<br>
+<br><b>0D09=2,copy_matrix %1d% to %2d%</b>
+<br>Copies matrix to another matrix.
+<br>Param 1: pointer to source matrix
+<br>Param 2: pointer to destination matrix
+<br>
+<br><b>0D0A=7,store_coords_to %5d% %6d% %7d% from_matrix %1d% with_offsets %2d% %3d% %4d%</b>
+<br>Gets coords on offset from matrix.
+<br>Param 1: pointer to matrix
+<br>Param 2: X offset
+<br>Param 3: Y offset
+<br>Param 4: Z offset
+<br>Param 5: var to store X coord
+<br>Param 6: var to store Y coord
+<br>Param 7: vat to store Z coord
+<br>
+<br><b>0D0B=3,get_actor %1d% bone %2d% matrix_to %3d%</b>
+<br>Gets actor's bone world matrix.
+<br>Param 1: actor handle
+<br>Param 2: bone, see Bones in stdc
+<br>Param 3: var to store pointer to matrix
+<br>
+<br><b>0D0C=3,get_car %1d% component %2s% matrix_to %3d% // IF and SET</b>
+<br>Gets world matrix of car component.
+<br>Param 1: car handle
+<br>Param 2: component name
+<br>Param 3: var to store pointer to matrix
+<br>Condition: returns true, if component is exist
+<br>
+<br><b>0D0D=3,%3d% = get_car %1d% component %2s% // IF and SET</b>
+<br>Gets car component.
+<br>Param 1: car handle
+<br>Param 2: component name
+<br>Param 3: var to store component
+<br>Condition: returns true, if component is exist
+<br>
+<br><b>0D0E=3,set_car %1d% component %2s% state %3d% // IF and SET</b>
+<br>Sets component state.
+<br>Param 1: car handle
+<br>Param 2: component name
+<br>Param 3: state, see Component states in stdc
+<br>
+<br><b>0D0F=2,set_car %1d% model_alpha %2d%</b>
+<br>Sets alpha value for car's model.
+<br>Param 1: car handle
+<br>Param 2: alpha (0-255)
+<br>
+<br><b>0D10=2,set_actor %1d% model_alpha %2d%</b>
+<br>Sets alpha value for actor's model.
+<br>Param 1: actor handle
+<br>Param 2: alpha (0-255)
+<br>
+<br><b>0D11=2,set_object %1d% model_alpha %2d%</b>
+<br>Sets alpha value for object's model.
+<br>Param 1: object handle
+<br>Param 2: alpha (0-255)
+<br>
+<br><b>0D12=3,set_car %1d% component %2s% model_alpha %3d% // IF and SET</b>
+<br>Sets alpha value for car's component model.
+<br>Param 1: car handle
+<br>Param 2: component name
+<br>Param 3: alpha (0-255)
+<br>Condition: returns true, if component is exist.
+<br>
+<br><b>0D13=2,set_matrix %1d% x_angle %2d%</b>
+<br>Sets matrix x angle.
+<br>Param 1: pointer to matrix
+<br>Param 2: angle (in degrees)
+<br>
+<br><b>0D14=2,set_matrix %1d% y_angle %2d%</b>
+<br>Sets matrix y angle.
+<br>Param 1: pointer to matrix
+<br>Param 2: angle (in degrees)
+<br>
+<br><b>0D15=2,set_matrix %1d% z_angle %2d%</b>
+<br>Sets matrix z angle.
+<br>Param 1: pointer to matrix
+<br>Param 2: angle (in degrees)
+<br>
+<br><b>0D16=2,set_matrix %1d% rotation_from_quat %2d%</b>
+<br>Sets matrix rotation from quaternion.
+<br>Param 1: pointer to matrix
+<br>Param 2: pointer to quat
+<br>
+<br><b>0D17=2,convert_matrix %1d% to_quat %2d%</b>
+<br>Sets quaternion from matrix.
+<br>Param 1: pointer to matrix
+<br>Param 2: pointer to quat
+<br>
+<br><b>0D18=6,rotate_quat %1d% axis_vector %2d% %3d% %4d% angle %5d% combine_op %6d%</b>
+<br>Rotates quaternion.
+<br>Param 1: pointer to quat
+<br>Param 2: axis X
+<br>Param 3: axis Y
+<br>Param 4: axis Z
+<br>Param 5: angle (in degrees)
+<br>Param 6: combine variant
+<br>
+<br><b>0D19=2,get_normalized_quat %1d% to_quat %2d%</b>
+<br>Normalizes quaternion.
+<br>Param 1: pointer to quat
+<br>Param 2: pointer to quat to store result
+<br>
+<br><b>0D1A=3,quat %3d% = quat %1d% * quat %2d%</b>
+<br>Quaternion multiplication.
+<br>Param 1: pointer to quat
+<br>Param 2: pointer to quat
+<br>
+<br><b>0D1B=3,get_entity %1d% type_to %2d% class_to %3d%</b>
+<br>Gets information about entity type.
+<br>Param 1: entity struct
+<br>Param 2: var to store entity type, see Entity types in stdc
+<br>Param 3: var to store entity class, see Entity classes in stdc
+<br>
+<br><b>0D1C=1,normalize_vector %1d%</b>
+<br>Normalizes vector.
+<br>Param 1: pointer to vector
+<br>
+<br><b>0D1D=4,matrix_slerp %1d% %2d% %3d% %4d%</b>
+<br>Performs matrix slerp.
+<br>Param 1: pointer to result matrix
+<br>Param 2: pointer to matrix
+<br>Param 3: pointer to matrix
+<br>Param 4: t
+<br>
+<br><b>0D1E=4,quat_slerp %1d% %2d% %3d% %4d%</b>
+<br>Performs quaternion slerp.
+<br>Param 1: pointer to result quat
+<br>Param 2: pointer to quat
+<br>Param 3: pointer to quat
+<br>Param 4: t
+<br>
+<br><b>0D1F=2,%2d% = component %1d% child</b>
+<br>Gets component child component.
+<br>Param 1: component
+<br>Param 2: var to store component
+<br>
+<br><b>0D20=2,%2d% = component %1d% next_component</b>
+<br>Gets component next component.
+<br>Param 1: component
+<br>Param 2: var to store componnt
+<br>
+<br><b>0D21=2,%2s% = component %1d% name</b>
+<br>Gets component name component.
+<br>Param 1: component
+<br>Param 2: var/adress to store component name
+<br>
+<br><b>0D22=2,%2d% = component %1d% ltm</b>
+<br>Gets component world matrix.
+<br>Param 1: component
+<br>Param 2: var to store matrix pointer
+<br>
+<br><b>0D23=2,%2d% = component %1d% modelling_matrix</b>
+<br>Gets component modelling matrix.
+<br>Param 1: component
+<br>Param 2: var to store matrix pointer
+<br>
+<br><b>0D24=5,set_quat %1d% elements %2d% %3d% %4d% %5d%</b>
+<br>Sets quaternion elements.
+<br>Param 1: pointer to quat
+<br>Param 2: X
+<br>Param 3: Y
+<br>Param 4: Z
+<br>Param 5: W
+<br>
+<br><b>0D25=17,set_matrix %1d% elements %2d% %3d% %4d% %5d% %6d% %7d% %8d% %9d% %10d% %11d% %12d% %13d% %14d% %15d% %16d% %17d%</b>
+<br>Sets matrix elements.
+<br>Param 1: pointer to matrix
+<br>Param 2: right X
+<br>Param 3: right Y
+<br>Param 4: right Z
+<br>Param 5: flags
+<br>Param 6: top X
+<br>Param 7: top Y
+<br>Param 8: top Z
+<br>Param 9: unused
+<br>Param 10: at X
+<br>Param 11: at Y
+<br>Param 12: at Z
+<br>Param 13: unused
+<br>Param 14: position X
+<br>Param 15: position Y
+<br>Param 16: position Z
+<br>Param 17: unused
+<br>
+<br><b>0D26=4,set_vector %1d% elements %2d% %3d% %4d%</b>
+<br>Sets vector elements.
+<br>Param 1: pointer to vector
+<br>Param 2: X
+<br>Param 3: Y
+<br>Param 4: Z
+<br>
+<br><b>0D27=3,copy_memory_from %1d% to %2d% size %3d%</b>
+<br>Copies block of memory.
+<br>Param 1: source
+<br>Param 2: destination
+<br>Param 3: size in bytes
+<br>
+<br><b>0D28=4,get_vector %1d% elements_to %2d% %3d% %4d%</b>
+<br>Gets vector elements.
+<br>Param 1: pointer to vector
+<br>Param 2: var to store X
+<br>Param 3: var to store Y
+<br>Param 4: var to store Z
+<br>
+<br><b>0D29=5,get_quat %1d% elements_to %2d% %3d% %4d% %5d%</b>
+<br>Gets quaternion elements.
+<br>Param 1: pointer to vector
+<br>Param 2: var to store X
+<br>Param 3: var to store Y
+<br>Param 4: var to store Z
+<br>Param 5: var to store W
+<br>
+<br><b>0D2A=2,%2d% = get_car %1d% number_of_collided_entites</b>
+<br>Gets car number of collided entities
+<br>Param 1: car handle
+<br>Param 2: var to store number
+<br>
+<br><b>0D2B=2,%2d% = get_actor %1d% number_of_collided_entites</b>
+<br>Gets actor number of collided entities
+<br>Param 1: actor handle
+<br>Param 2: var to store number
+<br>
+<br><b>0D2C=2,%2d% = get_object %1d% number_of_collided_entites</b>
+<br>Gets object number of collided entities
+<br>Param 1: object handle
+<br>Param 2: var to store number
+<br>
+<br><b>0D2D=8,get_local_time_year_to %1d% month_to %2d% day_of_week_to %3d% day_to %4d% hour_to %5d% minute_to %6d% second_to %7d% milliseconds_to %8d%</b>
+<br>Gets currents time from OS.
+<br>Param 1: var to store year, set -1 to ignore
+<br>Param 2: var to store month, set -1 to ignore
+<br>Param 3: var to store day of week, set -1 to ignore
+<br>Param 4: var to store day, set -1 to ignore
+<br>Param 5: var to store hour, set -1 to ignore
+<br>Param 6: var to store minute, set -1 to ignore
+<br>Param 7: var to store second, set -1 to ignore
+<br>Param 8: var to store milliseconds, set -1 to ignore
+<br>
+<br><b>0D2E=3,set_thread %1d% var %2d% to %3d%</b>
+<br>Sets value of thread's local variable.
+<br>Param 1: thread pointer
+<br>Param 2: var number
+<br>Param 3: value
+<br>
+<br><b>0D2F=3,%3d% = get_thread %1d% var %2d%</b>
+<br>Gets value of thread's local variable.
+<br>Param 1: thread pointer
+<br>Param 2: var number
+<br>Param 3: var to store value
+<br>
+<br><b>0D30=3,%3d% = actor %1d% bone %2d%</b>
+<br>Gets actor's bone.
+<br>Param 1: actor handle
+<br>Param 2: bone, see Bones in stdc
+<br>Param 3: var to store bone
+<br>
+<br><b>0D31=2,%2d% = bone %1d% offset_vector</b>
+<br>Gets bone offset.
+<br>Param 1: bone
+<br>Param 2: var to store pointer to vector
+<br>
+<br><b>0D32=2,%2d% = bone %1d% quat</b>
+<br>Gets bone quaternion.
+<br>Param 1: bone
+<br>Param 2: var to store pointer to quat
+<br>
+<br><b>0D33=3,set_car %1d% door %2d% window_state %3d%</b>
+<br>Sets car window state.
+<br>Param 1: car handle
+<br>Param 2: door, see Vehicle doors in stdc
+<br>Param 3: state, see Window states in stdc
+<br>
+<br><b>0D34=7,store_car %1d% collided_entities_to %2d% %3d% %4d% %5d% %6d% %7d%</b>
+<br>Stores car collided entities.
+<br>Param 1: car handle
+<br>Param 2: var to store entity struct, set -1 to ignore
+<br>Param 3: var to store entity struct, set -1 to ignore
+<br>Param 4: var to store entity struct, set -1 to ignore
+<br>Param 5: var to store entity struct, set -1 to ignore
+<br>Param 6: var to store entity struct, set -1 to ignore
+<br>Param 7: var to store entity struct, set -1 to ignore
+<br>
+<br><b>0D35=7,store_actor %1d% collided_entities_to %2d% %3d% %4d% %5d% %6d% %7d%</b>
+<br>Stores actor collided entities.
+<br>Param 1: actor handle
+<br>Param 2: var to store entity struct, set -1 to ignore
+<br>Param 3: var to store entity struct, set -1 to ignore
+<br>Param 4: var to store entity struct, set -1 to ignore
+<br>Param 5: var to store entity struct, set -1 to ignore
+<br>Param 6: var to store entity struct, set -1 to ignore
+<br>Param 7: var to store entity struct, set -1 to ignore
+<br>
+<br><b>0D36=7,store_object %1d% collided_entities_to %2d% %3d% %4d% %5d% %6d% %7d%</b>
+<br>Stores object collided entities.
+<br>Param 1: object handle
+<br>Param 2: var to store entity struct, set -1 to ignore
+<br>Param 3: var to store entity struct, set -1 to ignore
+<br>Param 4: var to store entity struct, set -1 to ignore
+<br>Param 5: var to store entity struct, set -1 to ignore
+<br>Param 6: var to store entity struct, set -1 to ignore
+<br>Param 7: var to store entity struct, set -1 to ignore
+<br>
+<br><b>0D37=3,struct %1d% param %2d% = %3d%</b>
+<br>Sets struct with 4b alignment param value.
+<br>Param 1: pointer to struct
+<br>Param 2: param index, start index is 0
+<br>Param 3: value
+<br>
+<br><b>0D38=3,%3d% = struct %1d% param %2d%</b>
+<br>Gets struct with 4b alignment param value.
+<br>Param 1: pointer to struct
+<br>Param 2: param index, start index is 0
+<br>Param 3: var to store value
+<br>
+<br><b>0D39=2,%2d% = actor %1d% max_health</b>
+<br>Gets actor max health value.
+<br>Param 1: actor handle
+<br>Param 2: var to store value
+<br>
+<br><b>0D3A=20,get_collision_between_points %1d% %2d% %3d% and %4d% %5d% %6d% flags %7d% %8d% %9d% %10d% %11d% %12d% %13d% %14d% ignore_entity %15d% store_point_to %17d% %18d% %19d% entity_to %20d% colpoint_data_to %16d% // IF and SET</b>
+<br>Gets collision data between two points.
+<br>Param 1: start X
+<br>Param 2: start Y
+<br>Param 3: start Z
+<br>Param 4: end X
+<br>Param 5: end Y
+<br>Param 6: end Z
+<br>Param 7: check solid objects
+<br>Param 8: check vehicles
+<br>Param 9: check peds
+<br>Param 10: check dynamic objects
+<br>Param 11: chack dummies
+<br>Param 12: ignore see-through stuff
+<br>Param 13: ignore some objects for camera
+<br>Param 14: ignore shoot-through stuff
+<br>Param 15: entity to ignore
+<br>Param 16: pointer to colpoint data, use STD_COLPOINT_DATA to use standart data buffer
+<br>Param 17: var to store result X
+<br>Param 18: var to store result Y
+<br>Param 19: var to store resilt Z
+<br>Param 20: var to store collided entity
+<br>Condition: returns true if there is an obstacle between points
+<br>
+<br><b>0D3B=4,get_colpoint_data %1d% normal_XYZ_to %2d% %3d% %4d%</b>
+<br>Gets colpoint normal vector.
+<br>Param 1: pointer to colpoint data
+<br>Param 2: var to store normal X
+<br>Param 3: var to store normal Y
+<br>Param 4: var to store normal Z
+<br>
+<br><b>0D3C=2,get_colpoint_data %1d% surface_to %2d%</b>
+<br>Gets colpoint data surface ID.
+<br>Param 1: pointer to colpoint data
+<br>Param 2: var to store surface ID
+<br>
+<br><b>0D3D=2,get_colpoint_data %1d% lighting_to %2d%</b>
+<br>Gets colpoint data lighting value.
+<br>Param 1: pointer to colpoint data
+<br>Param 2: var to store value
+<br>
+<br><b>0D3E=2,get_colpoint_data %1d% depth_to %2d%</b>
+<br>Gets colpoint data depth value.
+<br>Param 1: pointer to colpoint data
+<br>Param 2: var to store value
+<br>
+<br><b>0D3F=10,find_intersrction_between_circles %1d% %2d% %3d% and %4d% %5d% %6d% store_point1_to %7d% %8d% point2_to %9d% %10d%</b>
+<br>Finds intersrction coordinaes between tow circles.
+<br>Param 1: circleA X
+<br>Param 2: circleA Y
+<br>Param 3: circleA radius
+<br>Param 4: circleB X
+<br>Param 5: circleB Y
+<br>Param 6: circleB radius
+<br>Param 7: var to store first intersection point X
+<br>Param 8: var to store first intersection point Y
+<br>Param 9: var to store second intersection point X
+<br>Param 10: var to store second intersection point Y
+<br>
+<br><b>0D40=8,draw_2d_shape_type %3d% texture %4d% numVerts %2d% pVerts %1d% vertexAlpha %5d% srcBlend %6d% dstBlend %7d% priority %8d%</b>
+<br>Draws 2D shape.
+<br>Param 1: pointer to vertex buffer, use STD_VERTEX_BUFFER to use standart vertex buffer
+<br>Param 2: number if vertices, maximal number is 100
+<br>Param 3: shape type, see Primitive types in stdc
+<br>Param 4: texture, use NULL if you want to draw without texture
+<br>Param 5: enable vertex alpha
+<br>Param 6: source-blending, see Blend values in stdc
+<br>Param 7: destination-blending, see Blend values in stdc
+<br>Param 8: drawing priority, Shape priority in stdc
+<br>
+<br><b>0D41=14,set_vertices %1d% vertex %2d% xyz %5d% %6d% %7d% rhw %8d% RGBA %9d% %10d% %11d% %12d% uv %13d% %14d% invertX %3d% invertY %4d%</b>
+<br>Sets vertex params.
+<br>Param 1: pointer to vertex buffer, use STD_VERTEX_BUFFER to use standart vertex buffer
+<br>Param 2: vertex ID, start index is 1
+<br>Param 3: invert on X
+<br>Param 4: invert on Y
+<br>Param 5: X coord
+<br>Param 6: Y coord
+<br>Param 7: Z coord
+<br>Param 8: RHW
+<br>Param 9: red
+<br>Param 10: green
+<br>Param 11: blue
+<br>Param 12: alpha
+<br>Param 13: u-coord of texture
+<br>Param 14: v-coord of texture
+<br>
+<br><b>0D42=2,load_txd %1s% from %2s%</b>
+<br>Lods txd from file.
+<br>Param 1: name for new txd
+<br>Param 2: file path
+<br>
+<br><b>0D43=2,%2d% = txd %1s% id</b>
+<br>Gets txd's id.
+<br>Param 1: txd name
+<br>Param 2: var to store id
+<br>
+<br><b>0D44=3,%3d% = find_texture %1s% in_dictionary_named %2s% // IF and SET</b>
+<br>Finds texture in txd.
+<br>Param 1: texture name
+<br>Param 2: txd name
+<br>Param 3: var to store texture
+<br>Condition: returns true if texture was found
+<br>
+<br><b>0D45=5,rotate_2d_vertices_shape %1d% num_verts %2d% aroundXY %3d% %4d% angle %5d%</b>
+<br>Rotates vetices of 2D shape around point.
+<br>Param 1: pointer to vertex buffer
+<br>Param 2: number of vertices
+<br>Param 3: point X
+<br>Param 4: point Y
+<br>Param 5: angle (in degrees)
+<br>
+<br><b>0D46=3,%3d% = find_texture %1s% in_dictionary_with_id %2d% // IF and SET</b>
+<br>Finds texture in txd.
+<br>Param 1: texture name
+<br>Param 2: txd id
+<br>Param 3: var to store texture
+<br>Condition: returns true if texture was found
+<br>
+<br><b>0D47=2,%2d% = model %1d% txd_id</b>
+<br>Gets txd's id for model.
+<br>Param 1: model id
+<br>Param 2: var to store txd id
+<br>
+<br><b>0D48=2,%2d% = model %1d% crc32_key</b>
+<br>Gets model's CRC32 key.
+<br>Param 1: model id
+<br>Param 2: var to store key
+<br>
+<br><b>0D49=3, %3d% = compare_strings %1s% %2s% // IF and SET</b>
+<br>Compares two strings.
+<br>Param 1: string/pointer to string
+<br>Param 2: string/pointer to string
+<br>Condition: returns true if strings are equal
+<br>
+<br><b>0D4A=2,concatenate_strings %1d% %2s%</b>
+<br>Concatenate strings.
+<br>Param 1: pointer to string
+<br>Param 2: string/pointer to string
+<br>
+<br><b>0D4B=3, %3d% = locate_substring %1d% %2s% // IF and SET</b>
+<br>Finds the first occurrence of a string.
+<br>Param 1: pointer to string
+<br>Param 2: string/pointer to string
+<br>Param 3: var to store pointer to string
+<br>Condition: returns true if occurence was found
+<br>
+<br><b>0D4C=2,%2d% = string %1s% length</b>
+<br>Gets string length.
+<br>Param 1: string/pointer to string
+<br>Param 2: var to store length
+<br>
+<br><b>0D4D=2,copy_string %1s% to %2s%</b>
+<br>Copies string to another string
+<br>Param 1: string/pointer to string
+<br>Param 2: string/poiner to string
+<br>
+<br><b>0D4E=4,%4d% = struct %1d% offset %2d% size %3d%</b>
+<br>Gets value at struct offset.
+<br>Param 1: pointer to struct
+<br>Param 2: offset (in bytes)
+<br>Param 3: size (BYTE/WORD/DWORD)
+<br>Param 4: var to store value
+<br>
+<br><b>0D4F=4,struct %1d% offset %2d% size %3d% = %4d%</b>
+<br>Sets value at struct offset.
+<br>Param 1: pointer to struct
+<br>Param 2: offset (in bytes)
+<br>Param 3: size (BYTE/WORD/DWORD)
+<br>Param 4: value
+<br>
+<br><b>0D50=14,draw_shadow_type %1d% position %2d% %3d% %4d% width %5d% height %6d% rotation %7d% distance %8d% texture %9d% intensity %10d% RGB %11d% %12d% %13d% shadow_data %14d%</b>
+<br>Draws shadow.
+<br>Param 1: shadow type, see Shadow types in stdc
+<br>Param 2: position X
+<br>Param 3: position Y
+<br>Param 4: position Z
+<br>Param 5: width
+<br>Param 6: height
+<br>Param 7: rotation (in degrees)
+<br>Param 8: z-distance
+<br>Param 9: texture (you can also use some default shadow textures, see Shadow textures in stdc)
+<br>Param 10: intensity
+<br>Param 11: red
+<br>Param 12: green
+<br>Param 13: blue
+<br>Param 14: pointer to shadow data (use NULL is shadow don't use shadow data)
+<br>
+<br><b>0D51=14,draw_permanent_shadow_type %1d% position %2d% %3d% %4d% width %5d% height %6d% rotation %7d% distance %8d% texture %9d% intensity %10d% RGB %11d% %12d% %13d% time %14d%</b>
+<br>Draws permanent shadow.
+<br>Param 1: shadow type, see Shadow types in stdc
+<br>Param 2: position X
+<br>Param 3: position Y
+<br>Param 4: position Z
+<br>Param 5: width
+<br>Param 6: height
+<br>Param 7: rotation (in degrees)
+<br>Param 8: z-distance
+<br>Param 9: texture (you can also use some default shadow textures, see Shadow textures in stdc)
+<br>Param 10: intensity
+<br>Param 11: red
+<br>Param 12: green
+<br>Param 13: blue
+<br>Param 14: time (ms)
+<br>
+<br><b>0D52=12,draw_light_type %1d% position %2d% %3d% %4d% direction %5d% %6d% %7d% radius %8d% RGBA %9d% %10d% %11d% affect_entity %12d%</b>
+<br>Draws light.
+<br>Param 1: light type, see Light types in stdc
+<br>Param 2: position X
+<br>Param 3: position Y
+<br>Param 4: position Z
+<br>Param 5: direction X
+<br>Param 6: direction Y
+<br>Param 7: direction Z
+<br>Param 8: radius
+<br>Param 9: red
+<br>Param 10: green
+<br>Param 11: blue
+<br>Param 12: affected entity (use NULL if there's no entity to be affected)
+<br>
+<br><b>0D53=10,draw_corona_with_texture %1d% color %2d% %3d% %4d% %5d% on_entity %6d% at %7d% %8d% %9d% size %10d%</b>
+<br>Draws corona.
+<br>Param 1: textue (you can also use some default corona textures, see Corona textures in stdc)
+<br>Param 2: red
+<br>Param 3: green
+<br>Param 4: blue
+<br>Param 5: alpha
+<br>Param 6: enity (use NULL if there is no entity)
+<br>Param 7: X position
+<br>Param 8: Y position
+<br>Param 9: Z position
+<br>Param 10: size
+<br>
+<br><b>0D54=18,draw_corona_with_extra_params_texture %1d% color %2d% %3d% %4d% %5d% on_entity %6d% at %7d% %8d% %9d% size %10d% far_clip %11d% near_clip %12d% flare %13d% enable_reflection %14d% check_obstacles %15d% flash_while_fading %16d% fade_speed %17d% only_from_below %18d%</b>
+<br>Draws corona with some extra parameters.
+<br>Param 1: textue (you can also use some default corona textures, see Corona textures in stdc)
+<br>Param 2: red
+<br>Param 3: green
+<br>Param 4: blue
+<br>Param 5: alpha
+<br>Param 6: enity (use NULL if there is no entity)
+<br>Param 7: X position
+<br>Param 8: Y position
+<br>Param 9: Z position
+<br>Param 10: size
+<br>Param 11: far clip
+<br>Param 12: near clip
+<br>Param 13: flare type
+<br>Param 14: enable reflection at wet weather
+<br>Param 15: check obstacles
+<br>Param 16: flash while fading
+<br>Param 17: fade speed
+<br>Param 18: is seen only from below
+<br>
+<br><b>0D55=6,get_sun_colors_core_to %1d% %2d% %3d% glow_to %4d% %5d% %6d%</b>
+<br>Gets sun colors.
+<br>Param 1: var to store sun core red
+<br>Param 2: var to store sun core green
+<br>Param 3: var to store sun core blue
+<br>Param 4: var to store sun glow red
+<br>Param 5: var to store sun glow green
+<br>Param 6: var to store sun glow blue
+<br>
+<br><b>0D56=2,get_sun_screen_coords_XY_to %1d% %2d%</b>
+<br>Gets sun 2D position.
+<br>Param 1: var to store X position
+<br>Param 2: var to store Y position
+<br>
+<br><b>0D57=3,get_sun_position_to %1d% %2d% %3d% // IF and SET</b>
+<br>Gets sun 3D position.
+<br>Param 1: var to store X position
+<br>Param 2: var to store Y position
+<br>Param 3: var to store Z position
+<br>Returns true, if sun can be shown at the sky
+<br>
+<br><b>0D58=2,get_sun_size_core_to %1d% glow_to %2d%</b>
+<br>Gets sun size.
+<br>Param 1: var to store sun core size
+<br>Param 1: var to store sun glow size
+<br>
+<br><b>0D59=1,%1d% = current_weather</b>
+<br>Gets current weather.
+<br>Param 1: var to store weather id
+<br>
+<br><b>0D5A=2,get_trafficlights_type_NS_current_color_to %1d% type_WE_current_color_to %2d%</b>
+<br>Gets trafficlight colors.
+<br>Param 1: var to store color of NS trafficlights
+<br>Param 2: var to store color of WE trafficlights
+<br>
+<br><b>0D5B=12,draw_spotlight_from %1d% %2d% %3d% to %4d% %5d% %6d% base_radius %7d% target_radius %8d% enable_shadow %9d% shadow_intensity %10d% flag1 %11d% flag2 %12d%</b>
+<br>Draws spotlight.
+<br>Param 1: origin X
+<br>Param 2: origin Y
+<br>Param 3: origin Z
+<br>Param 4: target X
+<br>Param 5: target Y
+<br>Param 6: target Z
+<br>Param 7: base radius
+<br>Param 8: target radius
+<br>Param 9: draw shadow at target place
+<br>Param 10: intensity of shadow
+<br>Param 11: flag1
+<br>Param 12: flag2
+<br>
+<br><b>0D5C=3,%3d% = get_car %1d% light %2d% damage_state</b>
+<br>Gets car light damaging state.
+<br>Param 1: car handle
+<br>Param 2: car light, see Light types in stdc
+<br>Param 3: var to store light damaging state, see Light states in stdc
+<br>
+<br><b>0D5D=3,set_car %1d% light %2d% damage_state %3d%</b>
+<br>Sets car light damaging state.
+<br>Param 1: car handle
+<br>Param 2: car light, see Light types in stdc
+<br>Param 3: light damaging state, see Light states in stdc
+<br>
+<br><b>0D5E=3,get_vehicle %1d% class_to %2d% subclass_to %3d%</b>
+<br>Gets vehicle class and subclass.
+<br>Param 1: vehicle handle
+<br>Param 2: var to store vehicle's class, see Vehicle classes in stdc
+<br>Param 3: var to store vehicle's subclass, see Vehicle classes in stdc
+<br>
+<br><b>0D5F=7,get_vehicle %1d% dummy_element %2d% position %3d% to %5d% %6d% %7d% invert_x %4d%</b>
+<br>Gets vehicle dummy position.
+<br>Param 1: car handle
+<br>Param 2: dummy element, see Vehicle dummies in stdc
+<br>Param 3: position type, see Position type in stdc
+<br>
+<br><b>0D60=10,create_projectile_type %1d% launched_from_entity %2d% origin %3d% %4d% %5d% target %6d% %7% %8d% target_entity %9d% force %10d% // IF and SET</b>
+<br>Creates projectile.
+<br>Param 1: projectile type, see Projectile types in stdc
+<br>Param 2: pointer to entity struct
+<br>Param 3: origin X
+<br>Param 4: origin Y
+<br>Param 5: origin Z
+<br>Param 6: target X
+<br>Param 7: target Y
+<br>Param 8: target Z
+<br>Param 9: pointer to struct or NULL
+<br>Param 10: force
+<br>Condition: returns true if projectile was created
+<br>
+<br><b>0D61=3, %3d% = load_texture_from %1s% with_mask %2s% // IF and SET</b>
+<br>Loads texture from BMP file. Can be used with texturememory option to load file from memory. 
+<br>Param 1: file path (or pointer to file dump).....................................[text][p text][string var][p]
+<br>Param 2: file path (or pointer to file dump) or NULL, used as alpha mask.........[text][p text][string var][p][NULL]
+<br>Param 3: var to store texture....................................................[var: t]
+<br>Condition: returns true if texture limit isn't reached (1000)
+<br>
+<br><b>0D62=2,set_car %1d% remap_texture %2d%</b>
+<br>Sets car remap (paintjob texture), which are textures with remap_ prefix.
+<br>Param 1: car handle..............................................................[h car]
+<br>Param 2: texture, use NULL if you want to set default texture....................[t][NULL]
+<br>
+<br><b>0D63=5,set_car %1d% color %2d% RGB %3d% %4d% %5d%</b>
+<br>Sets car color.
+<br>Param 1: car hanle...............................................................[h car]
+<br>Param 2: car color, see Car colors in stdc.......................................[int Car colors]
+<br>Param 3: red.....................................................................[int]
+<br>Param 4: green...................................................................[int]
+<br>Param 5: blue....................................................................[int]
+<br>
+<br><b>0D64=2, %2d% = load_texture_png_from %1s% // IF and SET</b>
+<br>Loads texture from PNG file. Can be used with texturememory option to load file from memory. 
+<br>Param 1: file path (or pointer to file dump).....................................[text][p text][string var][p]
+<br>Param 2: var to store texture....................................................[var: t]
+<br>Condition: returns true if texture limit isn't reached (1000)
+<br>
+<br><b>0D65=6,print %1s% at %2d% %3d% scale %4d% %5d% style %6d%</b>
+<br>Prints a text into display ("light" version).
+<br>Param 1: text to show............................................................[text][p text][string var]
+<br>Param 2: screen X coord..........................................................[float]
+<br>Param 3: screen Y coord..........................................................[float]
+<br>Param 4: width...................................................................[float]
+<br>Param 5: height..................................................................[float]
+<br>Param 6: font type, see Font styles in stdc......................................[int Font styles]
+<br>
+<br><b>0D66=25,print %1s% at %2d% %3d% scale %4d% %5d% style %6d% prop %7d% align %8d% wrap %9d% justify %10d% color %11d% %12d% %13d% %14d% outline %15d% shadow %16d% dropColor %17d% %18d% %19d% %20d% background %21d% backColor %22d% %23d% %24d% %25d%</b>
+<br>Prints a text into display.
+<br>Param 1: text to show............................................................[text][p text][string var]
+<br>Param 2: screen X coord..........................................................[float]
+<br>Param 3: screen Y coord..........................................................[float]
+<br>Param 4: width...................................................................[float]
+<br>Param 5: height..................................................................[float]
+<br>Param 6: font type, see Font styles in stdc......................................[int Font styles]
+<br>Param 7: use proportional values.................................................[int TRUE/FALSE]
+<br>Param 8: text alignment, see Text alignment in stdc..............................[int Text alignment]
+<br>Param 9: text wrap (line range - screen X coord (f.e: X=100.0, wrap=700.0))......[float]
+<br>Param 10: text justify...........................................................[int TRUE/FALSE]
+<br>Param 11: text color R...........................................................[int]
+<br>Param 12: text color G...........................................................[int]
+<br>Param 13: text color B...........................................................[int]
+<br>Param 14: text color A...........................................................[int]
+<br>Param 15: outline size, use 0 to disable.........................................[int]
+<br>Param 16: shadow size, use 0 to disable. Text can't use shadow with outline ast..[int]
+<br>Param 17: outline/shadow color R.................................................[int]
+<br>Param 18: outline/shadow color G.................................................[int]
+<br>Param 19: outline/shadow color B.................................................[int]
+<br>Param 20: outline/shadow color A.................................................[int]
+<br>Param 21: draw background rectangle..............................................[int TRUE/FALSE]
+<br>Param 22: background color R.....................................................[int]
+<br>Param 23: background color G.....................................................[int]
+<br>Param 24: background color B.....................................................[int]
+<br>Param 25: background color A.....................................................[int]
+<br>
+<br><b>0D67=2,set_audiostream %1d% position_time %2d%</b>
+<br>Sets audiostream time position.
+<br>Param 1: audiostream handle......................................................[h audiostream]
+<br>Param 2: time in seconds.........................................................[float]
+<br>
+<br><b>0D68=2,%2d% = get_audiostream %1d% position_time</b>
+<br>Gets audiostream time position.
+<br>Param 1: audiostream handle......................................................[h audiostream]
+<br>Param 2: var to store audiostream time position..................................[var: float]
+<br>
+<br><b>0D69=4,%4d% = set_audiostream %1d% effect %2d% priority %3d%</b>
+<br>Sets audiostream effect.
+<br>Param 1: audiostream handle......................................................[h audiostream]
+<br>Param 2: effect type, see Audiostream effects in stdc............................[int Audiostream effects]
+<br>Param 3: effect priority.........................................................[int]
+<br>Param 4: var to store created audiostream effect.................................[var: h audiostreameffect]
+<br>See <b>BASS_ChannelSetFX</b> in BASS documentation to get more info.
+<br>
+<br><b>0D6A=2,remove_audiostream %1d% effect %2d%</b>
+<br>Removes audiostream effect.
+<br>Param 1: audiostream handle......................................................[h audiostream]
+<br>Param 2: audiostream effect handle...............................................[h audiostreameffect]
+<br>See <b>BASS_ChannelRemoveFX</b> in BASS documentation to get more info.
+<br>
+<br><b>0D6B=2,set_audiostream_effect %1d% parameters_from_buf %2d%</b>
+<br>Sets audiostream effect parameters.
+<br>Param 1: audiostream effect handle...............................................[h audiostreameffect]
+<br>Param 2: pointer to parameters structure.........................................[p]
+<br>See <b>BASS_FXSetParameters</b> in BASS documentation to get more info.
+<br>
+<br><b>0D6C=2,get_audiostream_effect %1d% parameters_to_buf %2d%</b>
+<br>Stores audiostream effect parameters.
+<br>Param 1: audiostream effect handle...............................................[h audiostreameffect]
+<br>Param 2: pointer to parameters structure to fill.................................[p]
+<br>See <b>BASS_FXGetParameters</b> in BASS documentation to get more info.
+<br>
+<br><b>0D6D=1,reset_audiostream_effect %1d%</b>
+<br>Resets audiostream effect. This doesn't work with audiostream handle.
+<br>Param 1: audiostream effect handle...............................................[h audiostreameffect]
+<br>See <b>BASS_FXReset</b> in BASS documentation to get more info.
+<br>
+<br><b>0D6E=3,set_audiostream %1d% attribute %2d% to %3d%</b>
+<br>Sets audiostream attribute value.
+<br>Param 1: audiostream handle......................................................[h audiostream]
+<br>Param 2: an attribute to set, see Audiostream attributes in stdc.................[int Audiostream attributes]
+<br>Param 3: attribute value.........................................................[float]
+<br>See <b>BASS_ChannelSetAttribute</b> in BASS documentation to get more info.<br> 
+Notice MUSIC attributes won't work with CLEO audiostreams.
+<br>
+<br><b>0D6F=3,%3d% = get_audiostream %1d% attribute %2d%</b>
+<br>Gets audiostream attribute value.
+<br>Param 1: audiostream handle......................................................[h audiostream]
+<br>Param 2: an attribute, see Audiostream attributes in stdc........................[int Audiostream attributes]
+<br>Param 3: var to store attribute value............................................[var: float]
+<br>See <b>BASS_ChannelGetAttribute</b> in BASS documentation to get more info.<br> 
+Notice MUSIC attributes won't work with CLEO audiostreams.
+<br>
+<br><b>0D70=7,set_3d_audiostream %1d% _3d_attributes_mode %2d% min %3d% max %4d% iangle %5d% oangle %6d% outvol %7d%</b>
+<br>Sets 3d audiostream attributes. This works only with audiostreams loaded with <b>0AC1</b>.
+<br>Param 1: audiostream handle......................................................[h audiostream]
+<br>Param 2: mode, see 3d audiostream modes in stdc..................................[int 3d audiostream modes]
+<br>Param 3: min.....................................................................[float]
+<br>Param 4: max.....................................................................[float]
+<br>Param 5: iangle..................................................................[int]
+<br>Param 6: oangle..................................................................[int]
+<br>Param 7: outvol..................................................................[float]
+<br>See <b>BASS_ChannelSet3DAttributes</b> in BASS documentation to get more info.<br> 
+Notice MUSIC attributes won't work with CLEO audiostreams.
+<br>
+<br><b>0D71=7,get_3d_audiostream %1d% _3d_attributes_mode_to %2d% min_to %3d% max_to %4d% iangle_to %5d% oangle_to %6d% outvol_to %7d%</b>
+<br>Gets 3d audiostream attributes. This works only with audiostreams loaded with <b>0AC1</b>.
+<br>Param 1: audiostream handle......................................................[h audiostream]
+<br>Param 2: var to store mode, see 3d audiostream modes in stdc.....................[var: int 3d audiostream modes]
+<br>Param 3: var to store min........................................................[var: float]
+<br>Param 4: var to store max........................................................[var: float]
+<br>Param 5: var to store iangle.....................................................[var: int]
+<br>Param 6: var to store oangle.....................................................[var: int]
+<br>Param 7: var to store outvol.....................................................[var: float]
+<br>See <b>BASS_ChannelGet3DAttributes</b> in BASS documentation to get more info.<br> 
+Notice MUSIC attributes won't work with CLEO audiostreams.
+<br>
+<br><b>0D72=3,get_sfx_volume_to %2d% radio_volume_to %3d% type %1d%</b>
+<br>Gets game sfx and radio volume</b>.
+<br>Param 1: value type to return, see Param types in stdc. If using TYPE INT, it ...[int Param types]
+<br>.........returns a value in ranges 0...64. If using TYPE_FLOAT, it returns a.....
+<br>.........value in ranges 0.0...1.0...............................................
+<br>Param 2: var to store sfx volume, or NULL if this value is not needed............[var: int|float]
+<br>Param 3: var to store radio volume, or NULL if this value is not needed..........[var: int|float]
+<br>
+<br><b>0D73=3,get_screen_width_to %2d% height_to %3d% type %1d%</b>
+<br>Gets game sfx and radio volume</b>.
+<br>Param 1: value type to return, see Param types in stdc...........................[int Param types]
+<br>Param 2: var to store screen width, or NULL if this value is not needed..........[var: int|float]
+<br>Param 3: var to store screen height, or NULL if this value is not needed.........[var: int|float]
+<br>
+</font></BODY></HTML>

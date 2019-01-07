@@ -1,0 +1,4 @@
+end
+if
+    0AB1: call_scm_func @switch_compare_func 1 1538
+then

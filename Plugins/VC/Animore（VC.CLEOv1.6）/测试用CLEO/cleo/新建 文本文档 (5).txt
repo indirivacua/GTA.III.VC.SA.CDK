@@ -1,0 +1,23 @@
+{$CLEO}
+0000:
+wait 0
+actor.EmulateFromPlayer(0@,0)
+while true
+    wait 0
+    while 05EE:  key_pressed 1009
+        wait 0
+        0843: actor 0@ play_animation "walk_civi" ifp_name "ped" framedelta 1.0
+    end
+    while 05EE:  key_pressed 1010
+        wait 0
+        0843: actor 0@ play_animation "run_csaw_right" ifp_name "ped" framedelta 1.0
+    end
+    while 05EE:  key_pressed 1011
+        wait 0
+        0843: actor 0@ play_animation "sance" ifp_name "sance" framedelta 1.0
+    end
+    while 05EE:  key_pressed 1012
+        wait 0
+        0844: actor 0@ play_animation_id 163 group_id 0 framedelta 1.0    //Group ped - Animation FuckU 
+    end
+end        

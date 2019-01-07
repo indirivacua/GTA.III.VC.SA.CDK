@@ -1,0 +1,37 @@
+REQUIREMENTS:
+
+Grand Theft Auto Vice City version 1.0 or 1.1
+CLEO for GTA Vice City version 2.0.0.2
+Microsoft Visual C++ 2010 Redistributable x86
+
+INSTALLATION (for players):
+1. Get and install CLEO 2.0.0.1 from this link: http://gtaforums.com/topic/807185-cleo-20/
+2. Copy the contents of this archive, and paste it in the root folder of your game.
+3. Enjoy! :)
+
+INSTALLATION (for scripters):
+1. Get the latest version of Sanny Builder 3 from http://sannybuilder.com
+2. Get and install CLEO 2.0.0.1 from this link: http://gtaforums.com/topic/807185-cleo-20/
+3. Copy the contents of this archive, and paste it in the root folder of your game.
+4. Open the Sanny Builder 3 folder (default C:\Program Files (x86)\Sanny Builder 3 for 64-Bit systems or C:\Program Files\Sanny Builder 3 for 32-Bit systems)
+5. Navigate to data\vc
+6. Open opcodes.txt and paste this text at the end of the file:
+0AAC: play_audio_stream "test.mp3" loop 0 volume 0.5
+0AAD: stop_audio_stream
+7AAA: play_mod_music "test.mod"
+7AAB: stop_mod_music
+7AAC: play_audio_stream_2channel "Audio\test.wav" loop 1 volume 0.5
+7ABB: set_mod_position 2 2
+7ABC: set_stream_playing_mode mode 0
+7. Save the file.
+8. Open VCSCM.INI and paste the following text at the end of the file:
+0AAC=3,play_audio_stream_1channel %1d% loop %2d% volume %3d%
+0AAD=0,stop_audio_stream
+7AAA=1,play_mod_music %1d%
+7AAB=0,stop_mod_music
+7AAC=3,play_audio_stream_2channel %1d% loop %2d% volume %3d%
+7ABB=2,set_mod_position %1d% %2d%
+7ABC=1,set_stream_playing_mode mode %2%
+9. Save the file
+
+Installation is complete! Happy modding! :)

@@ -1,0 +1,25 @@
+/*
+  NewOpcodes 2.0
+  Example script: Vehicle Dummy
+  Creates corona for each vehicle dummy.
+*/
+
+{$CLEO}
+{$I stdc}
+
+while true
+    wait 0
+    {$I forplayercar}
+    0A97: s = car veh struct
+    for i = 0 to 14      
+        0D5F: get_vehicle veh dummy_element i position LOCAL to x y z invert_x false // IF and SET
+        if or
+            x <> 0.0
+            y <> 0.0
+            z <> 0.0
+        then
+            0D53: draw_corona_with_texture CORONASTAR color 255 0 0 255 on_entity s at x y z size 0.6
+        end
+    end
+    {$I for_end}
+end

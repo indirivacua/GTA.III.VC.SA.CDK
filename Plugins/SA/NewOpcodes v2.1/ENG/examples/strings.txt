@@ -1,0 +1,38 @@
+/*
+  NewOpcodes 2.0
+  Example script: Strings
+  An example of using strings with NewOpcodes.
+*/
+
+{$CLEO}
+{$I stdc}
+
+goto @example_1 // @example_2
+
+:example_1
+0AC8: s = allocate_memory_size 24
+0AC8: p = allocate_memory_size 24
+0D4F: struct p offset  0 size 8 = "This is"
+0D4F: struct p offset  8 size 8 = " just a"
+0D4F: struct p offset 16 size 8 = " test"
+for i = 0 to 2
+    0D4A: concatenate_strings s p
+    p += 8
+end
+0ACD: show_text_highpriority s time 10000 // This is just a test
+0AC9: free_allocated_memory p
+goto @end
+
+:example_2
+0AC8: s = allocate_memory_size 64
+0D4D: copy_string "Let's start from here: Helloooo, world!!!" to s
+if 
+    0D4B: p = locate_substring s "H" // IF and SET
+then
+    0ACD: show_text_highpriority p time 10000 // Helloooo, world!!!
+end
+goto @end
+
+:end
+0AC9: free_allocated_memory s
+0A93:

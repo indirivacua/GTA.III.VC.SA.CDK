@@ -1,0 +1,11 @@
+const
+    ped = 31@
+end
+if
+    player.Defined($player_char)
+then
+    actor.StorePos($player_actor, 29@, 30@, 31@)
+    if
+        0AE1: ped = random_actor_near_point 29@ 30@ 31@ in_radius 200.0 find_next 0 pass_deads 1
+    then
+    

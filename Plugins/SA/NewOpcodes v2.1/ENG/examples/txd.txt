@@ -1,0 +1,29 @@
+/*
+  NewOpcodes 2.0
+  Example script: TXD
+  An example of loading txd and using textures from it.
+*/
+
+{$CLEO}
+{$I stdc}
+
+if
+    0D42: load_txd "myTxd" from "MODELS\\FRONTEN2.TXD" // IF and SET 
+then
+    0D43: 0@ = txd "myTxd" id
+    while true
+        0209: 1@ = random_int_in_ranges 2 9
+        0AD3: 2@v = format "back%d" 1@
+        if
+            0D46: 6@ = find_texture 2@v in_dictionary 0@ // IF and SET
+        then
+            32@ = 0
+            while 32@ < 3000
+                wait 0
+                sprite.Draw(6@, 100.0, 100.0, 600.0, 400.0, 255, 255, 255, 200, 0.0)
+            end
+        else
+            wait 0
+        end
+    end
+end

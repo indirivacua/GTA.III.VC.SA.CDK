@@ -1,0 +1,15 @@
+$shader
+$begin
+^Load,[0DF0,=,2,0,0],("FileName%v")
+Draw,0DF1,0,0,("Shader%h" "Technique%v" "Left%f" "Top%f" "Right%f" "Bottom%f")
+DrawHudElement,0DFA,0,0,("Shader%h" "Technique%v" "Left%f" "Top%f" "Right%f" "Bottom%f")
+SetFloat,0DF2,0,0,("Shader%h" "ParamName%v" "Value%f")
+SetInt,0DF3,0,0,("Shader%h" "ParamName%v" "Value%i")
+SetBool,0DF4,0,0,("Shader%h" "ParamName%v" "Value%b")
+SetVector,0DF5,0,0,("Shader%h" "ParamName%v" "X%f" "Y%f" "Z%f" "W%f")
+SetMatrix,0DF6,0,0,("Shader%h" "ParamName%v" "Matrix%h")
+SetTexture,0DF7,0,0,("Shader%h" "ParamName%v" "TextureName%v")
+SetRwTexture,0DFB,0,0,("Shader%h" "ParamName%v" "Texture%h")
+LoadTexture,0DF8,0,0,("Name%v" "FileName%v")
+UnloadTexture,0DF9,0,0,("Name%v")
+$end

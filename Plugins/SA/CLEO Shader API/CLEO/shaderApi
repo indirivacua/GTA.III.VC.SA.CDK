@@ -1,0 +1,25 @@
+/*
+/* Shader API header
+/* 
+/* Shader API CLEO developed by DK22Pac
+*/
+{$OPCODE 0DF0=2, %2d% = load_shader_from_file %1s%}
+{$OPCODE 0DF1=6,draw_shader %1d% technique %2s% at %3d% %4d% %5d% %6d%}
+{$OPCODE 0DF2=3,set_shader %1d% float_param %2s% to %3d%}
+{$OPCODE 0DF3=3,set_shader %1d% int_param %2s% to %3d%}
+{$OPCODE 0DF4=3,set_shader %1d% bool_param %2s% to %3d%}
+{$OPCODE 0DF5=6,set_shader %1d% vector_param %2s% to %3d% %4d% %5d% %6d%}
+{$OPCODE 0DF6=3,set_shader %1d% matrix_param %2s% to %3d%}
+{$OPCODE 0DF7=3,set_shader %1d% dx_texture_param %2s% to %3s%}
+{$OPCODE 0DF8=2,load_dx_texture %1s% from_file %2s%}
+{$OPCODE 0DF9=1,unload_dx_texture %1s%}
+{$OPCODE 0DFA=6,draw_shader %1d% technique %2s% at %3d% %4d% %5d% %6d% as_hud_element}
+{$OPCODE 0DFB=3,set_shader %1d% rw_texture_param %2s% to %3h%}
+const
+SCREEN_BASE_X=1
+SCREEN_BASE_Y=2
+SCREEN_SIZE_X=3
+SCREEN_SIZE_Y=4
+SCREEN_HALF_X=5
+SCREEN_HALF_Y=6
+end

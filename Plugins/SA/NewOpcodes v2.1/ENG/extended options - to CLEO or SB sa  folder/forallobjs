@@ -1,0 +1,14 @@
+const
+    obj = 31@
+end
+0A8D: 29@ = read_memory 0xB7449C size 4 virtual_protect 0
+000A: 29@ += 0x4
+0A8D: 29@ = read_memory 29@ size 4 virtual_protect 0
+for 30@ = 0 to 89344 step 0x100
+    0A8D: obj = read_memory 29@ size 1 virtual_protect 0
+    000A: 29@ += 0x1
+    if and
+        0029:  obj >= 0x00 
+        001B:  0x80 > obj
+    then 
+        005A: obj += 30@

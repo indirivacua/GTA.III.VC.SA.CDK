@@ -1,0 +1,28 @@
+/*
+  NewOpcodes 2.0
+  Example script: SunLight
+  Creates a pointlight for game sun. Makes game dynamic objects pre-lighted with (d, e, f) color.
+*/
+
+{$CLEO}
+{$I stdc}
+var
+    d: array 3 of float
+end
+{$I inloop}
+00BF: a = current_time_hours, b = current_time_minutes
+077E: get_active_interior_to b
+if and
+    b == 0
+    a > 6
+    0D57: get_sun_position_to a b c
+then
+    0D55: get_sun_colors_core_to d e f glow_to d e f
+    for i = 0 to 2
+        0093: d[i] = integer d[i] to_float
+        0017: d[i] /= 2.0
+        0092: d[i] = float d[i] to_integer
+    end
+    0D52: draw_light_type LIGHT_DEFAULT position a b c direction 0 0 0 radius 6000.0 RGB d e f affect_entity NULL
+end
+{$I end}
